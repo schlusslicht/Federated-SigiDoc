@@ -262,16 +262,16 @@
     <field name="monogram">
       <xsl:choose>
         <xsl:when test="@rend = 'monogram-block'">
-          <xsl:text>block monogram</xsl:text>
+          <xsl:text>Block monogram</xsl:text>
         </xsl:when>
         <xsl:when test="@rend = 'monogram-cross'">
-          <xsl:text>cruciform monogram</xsl:text>
+          <xsl:text>Cruciform monogram</xsl:text>
         </xsl:when>
         <xsl:when test="@rend = 'monogram-other'">
-          <xsl:text>other shape</xsl:text>
+          <xsl:text>Other shape</xsl:text>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:text>unknown monogram type</xsl:text>
+          <xsl:text>Unknown monogram type</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </field>

@@ -70,8 +70,8 @@
 
             <label>
               <p>
-                <a href="#" onclick="toggle_visibility('keyboard_box-ar');">Athena Ruby</a>
-                <xsl:text> | </xsl:text>
+                <!--<a href="#" onclick="toggle_visibility('keyboard_box-ar');">Athena Ruby</a>
+                <xsl:text> | </xsl:text>-->
                 <!-- comment this line out if you do not want the Greek keyboard; if needed, see also base.css -->
                 <a href="#" onclick="toggle_visibility('keyboard_box');">
                   <i18n:text i18n:key="search-greek-keyboard">Greek keyboard</i18n:text>

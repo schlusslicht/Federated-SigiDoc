@@ -271,7 +271,7 @@
           <xsl:text>Other shape</xsl:text>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:text>Unknown monogram type</xsl:text>
+          <xsl:text>Unknown</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </field>

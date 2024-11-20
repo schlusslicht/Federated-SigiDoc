@@ -216,7 +216,7 @@
       <xsl:value-of select="$cases//tei:item[@xml:id = $ref-id]//tei:term[@xml:lang = 'en']"/>
     </field>
   </xsl:template>
-  <xsl:template match="tei:collection[@xml:lang = 'en']" mode="facet_collection">
+  <xsl:template match="tei:collection/tei:rs[@xml:lang = 'en']" mode="facet_collection">
     <field name="collection">
       <xsl:value-of select="."/>
     </field>
@@ -297,6 +297,27 @@
       />
     </field>
   </xsl:template>
+  
+  <xsl:template match="//tei:div[@type='translation']//tei:p[@xml:lang='en']" mode="facet_translation">
+    <field name="translation">
+      <xsl:value-of select="."/>
+    </field>
+  </xsl:template>
+  
+  <xsl:template match="//tei:origDate//tei:seg[@xml:lang='en']" mode="facet_origDate">
+    <field name="origdate">
+      <xsl:value-of select="."/>
+    </field>
+  </xsl:template>
+  
+  <!--
+  <xsl:template match="//tei:collection//tei:rs[@xml:lang='en']" mode="facet_collection">
+    <field name="origdate">
+      <xsl:value-of select="."/>
+    </field>
+  </xsl:template>
+  -->
+  
 
   <!-- This template is called by the Kiln tei-to-solr.xsl as part of
        the main doc for the indexed file. Put any code to generate
@@ -326,7 +347,11 @@
     <xsl:call-template name="field_material"/>
     <xsl:call-template name="field_gender"/>
     <xsl:call-template name="field_language"/>
+    <xsl:call-template name="field_translation"/>
+    <xsl:call-template name="field_origDate"/>
+    
   </xsl:template>
+  
   <xsl:template name="field_sigidoc_id_number">
     <xsl:apply-templates mode="facet_sigidoc_id_number" select="//tei:idno[@type = 'SigiDocID']"/>
   </xsl:template>
@@ -389,7 +414,7 @@
       select="//tei:rs[@type = 'legendsCases'][@ref][ancestor::tei:div/@type = 'textpart']"/>
   </xsl:template>
   <xsl:template name="field_collection">
-    <xsl:apply-templates mode="facet_collection" select="//tei:collection[@xml:lang = 'en']"/>
+    <xsl:apply-templates mode="facet_collection" select="//tei:collection/tei:rs[@xml:lang = 'en']"/>
   </xsl:template>
   <xsl:template name="field_material">
     <xsl:apply-templates mode="facet_material" select="//tei:material/tei:seg[@xml:lang = 'en']"/>
@@ -425,4 +450,16 @@
     <xsl:apply-templates mode="facet_language"
       select="//tei:div[@type='edition' and @subtype='editorial']/tei:div[@type='textpart' and (@n='obv' or @n='rev')]"/>
   </xsl:template>
+  
+  <xsl:template name="field_translation">
+    <xsl:apply-templates mode="facet_translation"
+      select="//tei:div[@type='translation']//tei:p[@xml:lang='en']"/>
+  </xsl:template>
+  
+  <xsl:template name="field_origDate">
+    <xsl:apply-templates mode="facet_origDate"
+      select="//tei:origDate//tei:seg[@xml:lang='en']"/>
+  </xsl:template>
+  
+  
 </xsl:stylesheet>

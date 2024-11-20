@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jdk-alpine
+FROM eclipse-temurin:8u432-b06-jdk-alpine
 
 COPY . /sigidoc
 WORKDIR /sigidoc
